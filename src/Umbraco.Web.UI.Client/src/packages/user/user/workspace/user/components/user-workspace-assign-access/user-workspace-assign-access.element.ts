@@ -8,6 +8,9 @@ import type { UmbReferenceByUnique } from '@umbraco-cms/backoffice/models';
 import type { UmbUserGroupInputElement } from '@umbraco-cms/backoffice/user-group';
 import type { UUIBooleanInputEvent } from '@umbraco-cms/backoffice/external/uui';
 
+// TODO [LK] Temporary import of "@umbraco-cms/backoffice/element", until we figure out how to decouple it.
+import { UmbElementTreePickerDataSource } from '@umbraco-cms/backoffice/element';
+
 import '@umbraco-cms/backoffice/entity-data-picker';
 
 const elementName = 'umb-user-workspace-assign-access';
@@ -207,6 +210,9 @@ export class UmbUserWorkspaceAssignAccessElement extends UmbLitElement {
 		`;
 	}
 
+	// TODO [LK] Temporary import of "@umbraco-cms/backoffice/element", until we figure out how to decouple it.
+	#elementPickerDataSourceApi = new UmbElementTreePickerDataSource(this);
+
 	#renderElementAccess() {
 		return html`
 			<umb-property-layout
@@ -225,8 +231,8 @@ export class UmbUserWorkspaceAssignAccessElement extends UmbLitElement {
 						<umb-input-entity-data
 							slot="editor"
 							.selection=${this._elementStartNodeUniques.map((reference) => reference.unique)}
-							.dataSourceAlias=${'Umb.PropertyEditorDataSource.ElementFolder'}
-							.dataSourceConfig=${[]}
+							.dataSourceApi=${this.#elementPickerDataSourceApi}
+							.dataSourceConfig=${[{ alias: 'folderOnly', value: true }]}
 							@change=${this.#onElementStartNodeChange}>
 						</umb-input-entity-data>
 					`,

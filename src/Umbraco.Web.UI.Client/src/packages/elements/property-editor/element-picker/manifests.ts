@@ -3,19 +3,10 @@ import { UMB_PICKER_DATA_SOURCE_TYPE } from '@umbraco-cms/backoffice/picker-data
 import type { ManifestPropertyEditorDataSource } from '@umbraco-cms/backoffice/property-editor-data-source';
 import type { ManifestPropertyEditorUi } from '@umbraco-cms/backoffice/property-editor';
 
+// TODO: [LK] Remove `dataSources` in due course.
+// Currently we need at least one `propertyEditorDataSource` extension registered,
+// otherwise "property-editors\entity-data-picker\entry-point.ts" does not register the required manifests.
 const dataSources: Array<ManifestPropertyEditorDataSource> = [
-	{
-		type: 'propertyEditorDataSource',
-		alias: 'Umb.PropertyEditorDataSource.Element',
-		dataSourceType: UMB_PICKER_DATA_SOURCE_TYPE,
-		name: 'Element Property Data Source',
-		api: () => import('./element-tree-data-source.js'),
-		meta: {
-			label: 'Elements',
-			description: 'Umbraco Elements data source for property editors.',
-			icon: 'icon-plugin',
-		},
-	},
 	{
 		type: 'propertyEditorDataSource',
 		alias: 'Umb.PropertyEditorDataSource.ElementFolder',

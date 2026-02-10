@@ -9,6 +9,7 @@ import type {
 	UmbTreeRootItemsRequestArgs,
 } from '@umbraco-cms/backoffice/tree';
 
+// TODO: [LK] Delete this file once "Umb.PropertyEditorDataSource.ElementFolder" manifest is removed.
 export class UmbElementFolderTreePropertyEditorDataSource extends UmbControllerBase implements UmbPickerTreeDataSource {
 	#item = new UmbElementFolderItemRepository(this);
 	#tree = new UmbElementTreeRepository(this);

@@ -1,4 +1,5 @@
-﻿import { customElement, html, property, state } from '@umbraco-cms/backoffice/external/lit';
+﻿import { UmbElementTreePickerDataSource } from '../../picker-data-source/element-tree-data-source.js';
+import { customElement, html, property, state } from '@umbraco-cms/backoffice/external/lit';
 import { UmbChangeEvent } from '@umbraco-cms/backoffice/event';
 import { UmbLitElement } from '@umbraco-cms/backoffice/lit-element';
 import { UmbFormControlMixin, UMB_VALIDATION_EMPTY_LOCALIZATION_KEY } from '@umbraco-cms/backoffice/validation';
@@ -13,7 +14,7 @@ export class UmbElementPickerPropertyEditorUIElement
 	extends UmbFormControlMixin<Array<string> | undefined, typeof UmbLitElement>(UmbLitElement, undefined)
 	implements UmbPropertyEditorUiElement
 {
-	#dataSourceAlias = 'Umb.PropertyEditorDataSource.Element';
+	#dataSourceApi = new UmbElementTreePickerDataSource(this);
 
 	@property({ type: Boolean })
 	mandatory?: boolean;
@@ -76,8 +77,7 @@ export class UmbElementPickerPropertyEditorUIElement
 		return html`
 			<umb-input-entity-data
 				.selection=${this.value ?? []}
-				.dataSourceAlias=${this.#dataSourceAlias}
-				.dataSourceConfig=${[]}
+				.dataSourceApi=${this.#dataSourceApi}
 				.min=${this._min}
 				.min-message=${this._minMessage}
 				.max=${this._max}
