@@ -8807,6 +8807,43 @@ export type GetRecycleBinElementByIdOriginalParentResponses = {
 
 export type GetRecycleBinElementByIdOriginalParentResponse = GetRecycleBinElementByIdOriginalParentResponses[keyof GetRecycleBinElementByIdOriginalParentResponses];
 
+export type PutRecycleBinElementByIdRestoreData = {
+    body?: MoveElementRequestModel;
+    path: {
+        id: string;
+    };
+    query?: never;
+    url: '/umbraco/management/api/v1/recycle-bin/element/{id}/restore';
+};
+
+export type PutRecycleBinElementByIdRestoreErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * The resource is protected and requires an authentication token
+     */
+    401: unknown;
+    /**
+     * The authenticated user does not have access to this resource
+     */
+    403: unknown;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type PutRecycleBinElementByIdRestoreError = PutRecycleBinElementByIdRestoreErrors[keyof PutRecycleBinElementByIdRestoreErrors];
+
+export type PutRecycleBinElementByIdRestoreResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
 export type GetRecycleBinElementChildrenData = {
     body?: never;
     path?: never;
@@ -8913,6 +8950,43 @@ export type GetRecycleBinElementFolderByIdOriginalParentResponses = {
 };
 
 export type GetRecycleBinElementFolderByIdOriginalParentResponse = GetRecycleBinElementFolderByIdOriginalParentResponses[keyof GetRecycleBinElementFolderByIdOriginalParentResponses];
+
+export type PutRecycleBinElementFolderByIdRestoreData = {
+    body?: MoveFolderRequestModel;
+    path: {
+        id: string;
+    };
+    query?: never;
+    url: '/umbraco/management/api/v1/recycle-bin/element/folder/{id}/restore';
+};
+
+export type PutRecycleBinElementFolderByIdRestoreErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * The resource is protected and requires an authentication token
+     */
+    401: unknown;
+    /**
+     * The authenticated user does not have access to this resource
+     */
+    403: unknown;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type PutRecycleBinElementFolderByIdRestoreError = PutRecycleBinElementFolderByIdRestoreErrors[keyof PutRecycleBinElementFolderByIdRestoreErrors];
+
+export type PutRecycleBinElementFolderByIdRestoreResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
 
 export type GetRecycleBinElementReferencedByData = {
     body?: never;
